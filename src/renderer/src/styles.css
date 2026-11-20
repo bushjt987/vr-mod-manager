@@ -1,0 +1,120 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * VR Mod Manager theme.
+ *
+ * The app is dark-only by design -- it sits next to games, not next to a
+ * browser -- so the dark palette lives on :root and `.dark` simply mirrors it.
+ * The values are the same near-black palette the app shipped with, remapped
+ * onto shadcn's token names.
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* State colours for maturity badges and install state. */
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-caution: var(--caution);
+  --color-surface-2: var(--surface-2);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: #0f1115;
+  --foreground: #e7eaf0;
+
+  --card: #161a21;
+  --card-foreground: #e7eaf0;
+
+  --popover: #1b2029;
+  --popover-foreground: #e7eaf0;
+
+  --primary: #4d8dff;
+  --primary-foreground: #080f1e;
+
+  --secondary: #212833;
+  --secondary-foreground: #e7eaf0;
+
+  --muted: #1b2029;
+  --muted-foreground: #9aa5b4;
+
+  --accent: #212833;
+  --accent-foreground: #e7eaf0;
+
+  --destructive: #e5484d;
+  --destructive-foreground: #fff5f5;
+
+  --border: #252c37;
+  --input: #333d4b;
+  --ring: #4d8dff;
+
+  /* Extra semantic colours the mod cards need beyond shadcn's set. */
+  --ok: #43b968;
+  --warn: #e0a030;
+  --caution: #e8873c;
+  --surface-2: #1b2029;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family:
+      ui-sans-serif, system-ui, 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto,
+      'Helvetica Neue', Arial, sans-serif;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* The window scrolls a long list of mods; keep the bar unobtrusive. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 6px;
+    border: 2px solid var(--background);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--input);
+  }
+}

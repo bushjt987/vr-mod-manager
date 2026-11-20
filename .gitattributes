@@ -1,0 +1,19 @@
+# Normalise line endings so a checkout on another OS does not show every file
+# as modified. Text is stored LF in the repo and checked out native on Windows.
+* text=auto
+
+# Keep LF in the working tree for files that are read by tools rather than
+# edited by hand on Windows.
+*.ts   text eol=lf
+*.tsx  text eol=lf
+*.css  text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.html text eol=lf
+
+# Never touch binaries.
+*.png  binary
+*.jpg  binary
+*.ico  binary
+*.zip  binary
+*.7z   binary
